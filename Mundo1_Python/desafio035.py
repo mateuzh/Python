@@ -1,3 +1,5 @@
+#Código para verificar se 3 valores podem formar um triângulo
+
 l1 = float(input('Informe o 1º lado: '))
 l2 = float(input('Informe o 2º lado: '))
 l3 = float(input('Informe o 3º lado: '))
