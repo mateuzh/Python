@@ -1,8 +1,18 @@
 #Jogo de Jokenpô
+
 from random import choice
-resposta = input('Vamos jogar Pedra, Papel e Tesoura? \nPara SIM tecle [1] \nPara NÃO tecle [2]\n')
+from time import sleep
+
+resposta = input('Vamos jogar Pedra, Papel e Tesoura? \nPara SIM tecle [1] \nPara NÃO tecle [2]\nSua opção:')
+
 if resposta == '1':
-    jogador = str(input('Pedra... Papel... Tesoura... \nVocê quer: ')).upper().strip()
+    print('Pedra...')
+    sleep(1)
+    print('Papel...')
+    sleep(1)
+    print('Tesoura...')
+    sleep(1)
+    jogador = str(input('Sua escolha: ')).upper().strip()
     lista = ['PEDRA', 'PAPEL', 'TESOURA']
     computador = choice(lista)
     print(f'Eu escolhi... {computador}!!!')
@@ -20,5 +30,7 @@ if resposta == '1':
         print(f'Parece que eu venci! {computador} ganha de {jogador}')
     elif jogador == 'TESOURA' and computador == 'PEDRA':
         print(f'Parece que eu venci! {computador} ganha de {jogador}')
+    else:
+        print('Sua opção foi inválida! ')
 else:
     print('Então não jogamos, finalizando o programa. ')

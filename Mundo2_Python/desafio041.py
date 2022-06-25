@@ -10,11 +10,11 @@ sleep(0.5)
 idade = anoatual - anonasc
 if idade <= 9:
     categoria = 'MIRIM'
-elif 9 < idade <= 14:
+elif idade <= 14:
     categoria = 'INFANTIL'
-elif 14 < idade <= 19:
+elif idade <= 19:
     categoria = 'JUNIOR'
-elif 19 < idade <= 25:
+elif idade <= 25:
     categoria = 'SÊNIOR'
 elif idade > 25:
     categoria = 'MASTER'
