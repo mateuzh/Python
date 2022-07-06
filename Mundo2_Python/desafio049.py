@@ -1,4 +1,4 @@
-#código de tabuada utilizando laço de repetição
+#código de tabuada utilizando laço de repetição for
 
 escolha = int(input('Gostaria de saber a tabuada de qual número? '))
 print(f'Tabuada do: ', escolha)

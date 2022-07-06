@@ -1,4 +1,4 @@
-#código para calcular do 1º ao 10º termo de uma pa
+#código para calcular do 1º ao 10º termo de uma pa utilizando o laço for
 
 termo1 = int(input('Digite o primeiro termo: '))
 razao = int(input('Digite qual é a razão: '))

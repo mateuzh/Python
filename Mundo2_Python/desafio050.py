@@ -1,8 +1,10 @@
 #código para somar números pares dentre 6 valores digitados pelo usuário
 
+cont = 0
 s = 0
-for c in range(0, 6):
-    valor = int(input('Digite um número: '))
+for c in range(1, 7):
+    valor = int(input(f'Digite {c}º valor: '))
     if valor % 2 == 0:
-        s = s + valor
-print (f'A soma dos números pares foi de: {s}')
+        s += valor
+        cont += 1
+print (f'A soma dos números pares foi de: {s}\nPois foram digitados {cont} vezes os números pares')

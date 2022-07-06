@@ -4,9 +4,9 @@ nomehv = 0
 nomem = 0
 
 for c in range(1,5):
-    nome = str(input(f'Qual o nome do {c}º? ')).strip()
-    idade = int(input(f'Qual a idade? '))
-    sexo = str(input(f'Qual o sexo? ')).strip().upper()
+    nome = str(input(f'{c}ª Pessoa: ')).strip()
+    idade = int(input(f'Idade: '))
+    sexo = str(input(f'Gênero: [Masculino/Feminino] ')).strip().upper()
     print('=-'*14)
     if sexo == 'MASCULINO':
         if c == 1:

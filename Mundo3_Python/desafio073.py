@@ -1,0 +1,11 @@
+clubes = 'Palmeiras', 'Athletico', 'Atlético - MG', 'Corinthians', 'Internacional', 'Fluminense', 'São Paulo', 'Flamengo', 'Botafogo', 'Santos', 'Avaí', 'Coritiba', 'América - MG', 'Bragantino', 'Ceará', 'Atlético - GO', 'Goiás', 'Cuiabá', 'Juventude', 'Fortaleza'
+print(f'-='*80)
+print(f'Lista dos times do Brasileirão 2022 {clubes}')
+print(f'-='*80)
+print(f'Os 5 primeiros colocados são: {clubes[0:5]}')
+print(f'-='*80)
+print(f'Os últimos 4 colocados são: {clubes[-4:]}')
+print(f'-='*80)
+print(f'A tabela do Brasileirão em ordem alfabética: {sorted(clubes)}')
+print(f'-='*80)
+print(f'O Coritiba está na {clubes.index("Coritiba")+1}ª posição! ')
