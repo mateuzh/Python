@@ -1,7 +1,10 @@
+#Código para informar se há vogal na palavra que está em uma tupla
+
 palavras = ('APRENDER', 'PROGRAMAR', 'LINGUAGEM', 'PYTHON',
             'CURSO', 'GRATIS', 'ESTUDAR', 'PRATICAR',
             'TRABALHAR', 'MERCADO', 'PROGRAMADOR', 'FUTURO')
 for linhas in palavras:
-    print(f'Na palavra {linhas} temos', 'a' if 'A' in linhas else '',
-          'e' if 'E' in linhas else '', 'i' if 'I' in linhas else '',
-          'o' if 'O' in linhas else '', 'u' if 'U' in linhas else '')
+    print(f'\nNa palavra {linhas} temos', end=' ')
+    for vogais in linhas:
+        if vogais.lower() in 'aeiou':
+            print(vogais, end=' ')
