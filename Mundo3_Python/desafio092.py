@@ -1,10 +1,11 @@
+#Código para cadastrar os dados dentro de um dicionário com estruturas condicionais
+
 from datetime import date
 
-anoatual = date.today().year
 dados = {}
 dados['Nome'] = str(input('Digite seu nome: '))
 nascimento = int(input('Ano de nascimento: '))
-dados['Idade'] = anoatual - nascimento
+dados['Idade'] = date.today().year - nascimento
 dados['CTPS'] = int(input('Número da sua carteira de trabalho: (tecle 0 se não tiver)'))
 if dados['CTPS'] != 0:
     dados['Admissão'] = int(input('Ano da sua contratação: '))

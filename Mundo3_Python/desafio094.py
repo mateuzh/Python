@@ -1,36 +1,47 @@
-inf = {}
+#Código para inserir listas dentro de dicionários
+
+from time import sleep
+
+inf = dict()
 lista = list()
-listam = list()
 acima = list()
 soma = média = 0
 
 while True:
     inf['nome'] = str(input('Nome: '))
-    inf['sexo'] = str(input('Gênero: [M/F] ')).strip()
-    if inf['sexo'] not in 'FfMm':
-        inf['sexo'] = str(input('Resposta inválida. Vamos tentar novamente\nGênero: [M/F] '))
+    while True:
+        inf['sexo'] = str(input('Gênero: [M/F] ')).strip().upper()[0]
+        if inf['sexo'] in 'FM':
+            break
+        print('Resposta inválida. Vamos tentar novamente! ')
     inf['idade'] = int(input('Idade: '))
+    soma += inf['idade']
     lista.append(inf.copy())
-    resp = str(input('Continuar? [S/N] ')).strip()
-    if resp not in 'SsNn':
-        resp = str(input('Resposta inválida. Tente novamente\nContinuar? [S/N] '))
-    if resp in 'Nn':
+    while True:
+        resp = str(input('Continuar? [S/N] ')).strip().upper()[0]
+        if resp in 'SN':
+            break
+        print('Resposta inválida. Tente novamente')
+    if resp in 'N':
         break
 
 for c in range(0, len(lista)):
-    soma += lista[c]['idade']
-    média = soma / len(lista)
-    if lista[c]['sexo'] in 'Ff':
-        listam.append(lista[c]['nome'])
-for c in range(0, len(lista)):
     if lista[c]['idade'] > média:
         acima.append(lista[c])
-
+média = soma / len(lista)
 print(f'->'*40)
 print(f'O número de pessoas cadastradas foi: {len(lista)}')
-print(f'A média de idade do grupo é de: {média}')
-print(f'A lista de todas as mulheres cadastradas: {listam}')
-if len(acima) == 0:
-    print(f'Não houve cadastro de pessoas com idade acima da média do grupo!')
-for c in range(0, len(acima)):
-    print(f'Nome = {acima[c]["nome"]}; Sexo = {acima[c]["sexo"]}; Idade = {acima[c]["idade"]}')
+print(f'A média de idade do grupo é de: {média:.2f}')
+print(f'A lista de todas as mulheres cadastradas: ', end='')
+for m in lista:
+    if m['sexo'] in 'Ff':
+        print(m['nome'], end=' ')
+print( )
+print(f'Lista das pessoas com idade acima da média: ')
+for p in lista:
+    if p['idade'] > média:
+        for k, v in p.items():
+            print(f' -> {k} = {v};', end='')
+        print( )
+sleep(1)
+print('Programa finalizado! ')

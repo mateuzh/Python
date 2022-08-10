@@ -15,21 +15,31 @@ while True:
         gols = int(input(f'Quantos gols {jogadores["nome"]} fez no jogo {c}? '))
         soma += gols
         totalgols.append(gols) #Lista dos gols
-    jogadores['soma'] = soma
     jogadores['gols'] = totalgols[:] #Adiciona a lista dos gols no dicionário que contém os dados dos jogadores
+    jogadores['soma'] = soma
     totalgols.clear() #Apaga os dados temporários dos gols para que sejam colocados novos.
     dados.append(jogadores.copy()) #Passa os valores que estão no dicionário temporário para uma lista final, os guardando para serem mostrados posteriormente.
     soma = 0
-    resp = str(input('Continuar? [S/N] '))
-    if resp in 'Nn':
+    while True:
+        resp = str(input('Continuar? [S/N] ')).upper()[0]
+        if resp in 'SN':
+            break
+        print('Resposta inválida! Tente novamente.')
+    if resp in 'N':
         break
     print(f'_'*50)
 
 print(f'_'*50)
 
-print(f'{"Cód":<5} {"Jogador":<12} {"gols":<10} {"soma":>5}')
-for c in range(0, len(dados)): #Laço para mostrar os dados dos jogadores em forma de lista
-    print(f'{c:<5} {dados[c]["nome"]:<12} {dados[c]["gols"]} {dados[c]["soma"]:>5}')
+print(f'cód ', end='')
+for i in jogadores.keys():
+    print(f'{i:<20}', end='')
+print( )
+for k, v in enumerate(dados): #Laço para mostrar os dados dos jogadores em forma de lista
+    print(f'{k:>3} ', end='')
+    for d in v.values():
+        print(f'{str(d):<20}', end='')
+    print( )
 
 print(f'_'*50)
 
