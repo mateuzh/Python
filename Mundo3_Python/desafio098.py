@@ -1,10 +1,12 @@
 from time import sleep
 
+
 def contador(c, p, f):
-    if p > 0:
-        print(f'Contagem de {c} até {f} pulando de {p} em {p} ')
-    elif p < 0:
-        print(f'Contagem de {c} até {f} pulando de {p-p-p} em {p-p-p}')
+    if p < 0:
+        p *= -1
+    elif p == 0:
+        p = 1
+    print(f'Contando de {c} até {f} pulando de {p} em {p}')
     print(c, end=' ')
     if c < f:
         while c < f:
