@@ -7,30 +7,22 @@ def notas(*num, sit=False):
     :return: Dicionário com informações com base nas notas passada: maior nota, menor, média e situação da turma.
     '''
     results = {}
-    total = 0
-    soma = 0
-    for c, v in enumerate(num):
-        total += 1
-        soma += v
-        results["total"] = total
-        if c == 0 or v > results["maior"]:
-            results["maior"] = v
-        if c == 0 or v < results["menor"]:
-            results["menor"] = v
-    media = soma / total
-    results["média"] = media
+    results["Total"] = len(num)
+    results["Maior"] = max(num)
+    results["Menor"] = min(num)
+    results["Média"] = sum(num)/len(num)
     if sit != False:
-        if media >= 7:
+        if results["Média"] >= 7:
             results["situação"] = "Boa"
-        elif 5 <= media < 7:
+        elif results["Média"] >= 5:
             results["situação"] = "Razoável"
-        elif media < 5:
+        elif results["Média"] < 5:
             results["situação"] = "Ruim"
         else:
             print('Parece que algo não ocorreu bem, tente novamente!')
     return results
 
 
-resultados = notas(6.7, 5.5, 5.3, 2.5, sit=True)
+resultados = notas(6.7, 5.5, 5.3, 2.5, sit=False)
 print(resultados)
 

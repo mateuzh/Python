@@ -9,12 +9,11 @@ def fatorial(num, show=False):
     print(f'_'*40)
     f = 1
     for c in range(num, 0, -1):
-        f *= c
-    if show == True:
-        for c in range(num, 0, -1):
+        if show:
             print(f'{c}', end=' x ' if c != 1 else ' = ')
+        f *= c
     return f
 
 
 print(fatorial(5, show=True))
-help(fatorial)
+

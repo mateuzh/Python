@@ -1,8 +1,9 @@
-from datetime import datetime
+#Código para criar uma função que valide a idade
 
 
 def voto(i):
-    atual = datetime.today().year
+    from datetime import date
+    atual = date.today().year
     idade = atual - i
     if 65 >= idade >= 18:
         return f'Com {idade} anos de idade o voto é OBRIGATÓRIO'
@@ -12,5 +13,5 @@ def voto(i):
         return f'Com {idade} anos de idade o voto é OPCIONAL'
 
 
-n = int(input(f'Em que ano você nasceu? '))
+n = int(input(f'Em que ano você nasceu? ')) #Ano de nascimento
 print(f'{voto(n)} ')
