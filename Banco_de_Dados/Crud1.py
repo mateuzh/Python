@@ -8,7 +8,7 @@ def separador():
 
 crud = mysql.connector.connect(
     host='localhost',
-    user='root',
+    user='teste',
     password='1234',
     database='crud_PY'
 )
@@ -43,7 +43,7 @@ while True:
                                      "2- Tabela de Clientes \n"
                                      "3- Atualizar informações\n "
                                      "0- Menu Inicial\n"
-                                     "-> \n"))
+                                     "-> "))
             separador()
             if menuClientes == 1:
                 cpf = int(input("CPF: "))
@@ -64,6 +64,7 @@ while True:
                           f"inner join clientes on telefones.id = clientes.cpf;"
                 busca.execute(comando)
                 telefones = busca.fetchall()
+                print(f'{"CPF":<6}  {"NOME":<6}  {"DDD":<6}  {"TELEFONE":<15}  {"TIPO":<5}')
                 for NumerosTelefone in telefones:
                     print(NumerosTelefone)
                 separador()
@@ -309,5 +310,3 @@ while True:
                 separador()
             elif escolhaRelatorio == 0:
                 break
-
-
