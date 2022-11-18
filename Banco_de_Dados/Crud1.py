@@ -8,7 +8,7 @@ def separador():
 
 crud = mysql.connector.connect(
     host='localhost',
-    user='teste',
+    user='aplicacaoPython',
     password='1234',
     database='crud_PY'
 )
@@ -30,7 +30,7 @@ while True:
                         "3- Vendas\n"
                         "4- Relatórios \n"
                         "0- Finalizar\n"
-                        "Resposta: "))
+                        "-> "))
     separador()
     if usuario == 0:
         print(f"Finalizando... ")
@@ -100,7 +100,7 @@ while True:
                                      "2- Novo produto\n"
                                      "3- Atualizar Produto\n "
                                      "0- Menu Inicial\n"
-                                     "Opção: "))
+                                     "->"))
             separador()
             if menuProdutos == 1:
                 select = f"select id, descricao, preco, quantidade from produtos"
