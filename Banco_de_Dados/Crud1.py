@@ -15,13 +15,11 @@ crud = mysql.connector.connect(
 
 busca = crud.cursor()
 
-delete = f"delete " \
-         f"vendas, " \
-         f"detalhes_venda, " \
-         f"from " \
-         f"detalhes_venda " \
-         f"inner join vendas on detalhes_venda.id = vendas.id " \
-         f"where datediff(NOW(), data_venda) > 5 and tipo_pgto = '0' and pagamento = '0'; "
+delete = f"delete detalhes_venda, vendas from detalhes_venda inner join vendas on detalhes_venda.id = vendas.id " \
+         f"where datediff(NOW(), data_venda) > 5 and tipo_pgto = 'BOLETO' and " \
+         f"pagamento = '0';"
+busca.execute(delete)
+crud.commit()
 print("-=-=-= BEM-VINDO =-=-=-\n-=- LOJA VIRTUAL PY -=-")
 while True:
     usuario = int(input("Menu:\n"
@@ -151,15 +149,22 @@ while True:
             if menuVendas == 1:
                 cpfVenda = int(input("CPF do cliente: "))
                 idProduto = int(input("ID do produto: "))
-                pagamento = int(input("Pagamento:\n"
-                                      "1- Debito, Credito, Dinheiro, Pix \n"
-                                      "0- Boleto ainda não compensado\n"
+                formaPagamento = str(input("Pagamento:\n"
+                                           "- Debito\n"
+                                           "- Credito\n"
+                                           "- Dinheiro\n"
+                                           "- Boleto\n"
+                                           "Resposta: ")).upper().strip()
+                pagamento = int(input("Pagamento confirmado?\n"
+                                      "1 - Sim\n"
+                                      "0 - Não\n"
                                       "Resposta: "))
-                separador()
                 if pagamento == 1:
                     autorizacaoEntrega = 1
                 else:
                     autorizacaoEntrega = 0
+                separador()
+
                 insertVendas = f"insert into vendas (cpf, id_produto, pagamento, entrega) " \
                                f"values ('{cpfVenda}','{idProduto}',{pagamento},{autorizacaoEntrega})"
                 busca.execute(insertVendas)
@@ -169,17 +174,14 @@ while True:
                 novaVenda = busca.fetchall()
                 Data = str(input("Data da venda: ")).strip().split('/')
                 quantidade = int(input("Quantidade: "))
-                formaPagamento = int(input("Forma de pagamento:\n"
-                                           "1- Cartao de Crédito/Debito\n"
-                                           "2- Dinheiro/Cheque/Pix\n"
-                                           "3- Boleto\n"
-                                           "-> "))
                 insertDetalhes = f"insert into detalhes_venda " \
                                  f"(id, id_produto, cpf_cliente, data_venda, quantidade, tipo_pgto) " \
                                  f"values" \
                                  f"('{novaVenda[0][0]}','{idProduto}','{cpfVenda}','{Data[2]}-{Data[1]}-{Data[0]}'," \
                                  f"'{quantidade}'," \
                                  f"'{formaPagamento}')"
+                busca.execute(insertDetalhes)
+                crud.commit()
                 separador()
             elif menuVendas == 2:
                 select = f"select vendas.id, vendas.cpf, clientes.nome, vendas.id_produto, " \
